@@ -1,4 +1,4 @@
-package com.example.gymtestapp2;
+package com.example.gymtestapp2.model;
 
 public class user
 {

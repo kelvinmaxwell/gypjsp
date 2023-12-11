@@ -1,4 +1,6 @@
-package com.example.gymtestapp2;
+package com.example.gymtestapp2.dao;
+
+import com.example.gymtestapp2.model.Batches;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,19 +1,14 @@
-package com.example.gymtestapp2;
+package com.example.gymtestapp2.dao;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.example.gymtestapp2.model.user;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 //import java.sql.Connection;
@@ -52,35 +47,9 @@ public class userDAO
         }
     }
     
-    public boolean database_login(String email, String password) throws SQLException{
-    	try {
-    		connect_func("root","test");
-    		String sql = "select * from User where email = ?";
-    		preparedStatement = connect.prepareStatement(sql);
-    		preparedStatement.setString(1, email);
-    		ResultSet rs = preparedStatement.executeQuery();
-    		return rs.next();
-    	}
-    	catch(SQLException e) {
-    		System.out.println("failed login");
-    		return false;
-    	}
-    }
+
 	//connect to the database 
-    public void connect_func(String username, String password) throws SQLException {
-        if (connect == null || connect.isClosed()) {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-            } catch (ClassNotFoundException e) {
-                throw new SQLException(e);
-            }
-            connect = (Connection) DriverManager
-  			      .getConnection("jdbc:mysql://127.0.0.1:3306/trees?"
-  			          + "useSSL=false&user=" + username + "&password=" + password);
-            System.out.println(connect);
-        }
-    }
-    
+
     public List<user> listAllUsers() throws SQLException {
         List<user> listUser = new ArrayList<user>();        
         String sql = "SELECT * FROM User";      
@@ -119,7 +88,7 @@ public class userDAO
     }
     
     public void insert(user users) throws SQLException {
-    	connect_func("root","test");         
+
 		String sql = "insert into User(email, firstName, lastName, password, birthday,adress_street_num, adress_street,adress_city,adress_state,adress_zip_code,cash_bal,PPS_bal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 			preparedStatement.setString(1, users.getEmail());

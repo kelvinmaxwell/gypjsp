@@ -5,13 +5,13 @@
          version="5.0">
 
     <servlet>
-        <servlet-name>ControlServlet</servlet-name>
-        <servlet-class>com.example.gymtestapp2.ControlServlet</servlet-class>
+        <servlet-name>controlservlet</servlet-name>
+        <servlet-class>com.example.gymtestapp2.dao.ControlServlet</servlet-class>
     </servlet>
 
     <!-- Servlet Mapping -->
     <servlet-mapping>
-        <servlet-name>ControlServlet</servlet-name>
-        <url-pattern>/ControlServlet</url-pattern>
+        <servlet-name>controlservlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>

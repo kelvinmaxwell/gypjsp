@@ -1,30 +1,27 @@
-package com.example.gymtestapp2;
+package com.example.gymtestapp2.dao;
+
+import com.example.gymtestapp2.dao.BatchesDao;
+import com.example.gymtestapp2.dao.BatchesUserDao;
+import com.example.gymtestapp2.dao.userDAO;
+import com.example.gymtestapp2.model.BatchUsers;
+import com.example.gymtestapp2.model.Batches;
+import com.example.gymtestapp2.model.user;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
  
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
-
 
 public class ControlServlet extends HttpServlet {
 	    private static final long serialVersionUID = 1L;
-	    private userDAO userDAO = new userDAO();
+	    private com.example.gymtestapp2.dao.userDAO userDAO = new userDAO();
 	    
 	    private BatchesDao batchesDao=new BatchesDao();
 	    private BatchesUserDao batchesuserdao=new BatchesUserDao(0,null,null);
@@ -41,14 +38,14 @@ public class ControlServlet extends HttpServlet {
 	    	userDAO = new userDAO();
 	    	currentUser= "";
 	    }
-	    
-	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	        doGet(request, response);
-	    }
-	    
-	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	        String action = request.getServletPath();
-	        System.out.println(action);
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getServletPath();
+		System.out.println(action);
 	    
 	    try {
         	switch(action) {  
@@ -116,38 +113,7 @@ public class ControlServlet extends HttpServlet {
 	    }
 	    
  
-	    
-	    
-	    private void clientDecision(HttpServletRequest request, HttpServletResponse response)
-	            throws SQLException, IOException, ServletException {
-	    	
-	    	
-	    	 String id = request.getParameter("id");
-	    	 String date=request.getParameter("date");
-	        System.out.println("opening client started: 00000000000000000000000000000000000");
-	        request.setAttribute("id", id);
-	        request.setAttribute("date", date);
-	    
-	             
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerReply.jsp");       
-	        dispatcher.forward(request, response);
-	     
-	        System.out.println("opening client decision finished: 111111111111111111111111111111111111");}
-	    
-	    private void supplierDecision(HttpServletRequest request, HttpServletResponse response)
-	            throws SQLException, IOException, ServletException {
-	    	  System.out.println("opening supplier started: 00000000000000000000000000000000000");
 
-	     
-	        String id = request.getParameter("id");
-	    	 String date=request.getParameter("date");
-	      
-	        request.setAttribute("id", id);
-	        request.setAttribute("date", date);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("SupplierReply.jsp");       
-	        dispatcher.forward(request, response);
-	     
-	        System.out.println("opening supplier decision finished: 111111111111111111111111111111111111");}
 	    
 	    
 	    

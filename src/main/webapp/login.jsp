@@ -41,6 +41,7 @@ p {
  <center>	<h1> Welcome to our Gym Login page </h1> </center>
 	<div align="center">
 		<p> ${loginFailedStr} </p>
+
 		<form action="login" method="post">
 			<table border="1" cellpadding="5">
 				<tr>
